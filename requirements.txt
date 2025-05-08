@@ -1,0 +1,17 @@
+# Core dependencies:
+tensorflow==2.19.0
+keras==3.9.2
+numpy==1.26.4
+pandas==2.2.2
+matplotlib==3.9.2
+scikit-learn==1.5.1
+pytest==8.3.5
+ipython==9.2.0
+pylint==3.3.6
+pytest-cov==6.1.1
+black==25.1.0
+
+
+# For cloud deployment:
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
