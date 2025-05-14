@@ -5,25 +5,35 @@ It is a professional gender classification project combining manual tuning, DOE 
 
 # Gender Classification using CNN and DOE
 
-This project explores gender classification from facial images using Convolutional Neural Networks (CNNs), with a Design of Experiments (DOE) methodology to optimize model architecture and hyperparameters.
+This project explores gender classification from facial images using Convolutional Neural Networks (CNNs), with a Design of Experiments (DOE) methodology as well as a Post-DOE optimization process using learning rate decy callback as well as validation accuracy early stopping control to optimize model architecture and hyperparameters.
 
 ## Directory Structure
 ```
 gender-classification-doe/
+├── CSV files/
+│   └── DOE results.csv
+│   └── Post-DOE results.csv
 ├── data/
 │   └── README.md
 ├── notebooks/
+│   └── Exploratory Data Analaysis (EDA).ipynb
 │   └── gender_classification_DOE.ipynb
+│   └── gender_classification_Post_DOE.ipynb
+│   └── Figure 21.ipynb
 ├── src/
 │   ├── data_loader.py
 │   ├── model_builder.py
 │   ├── training_utils.py
 ├── results/
 │   └── DOE_CNN_Design.xlsx
-├── README.md
-├── requirements.txt
+│   └── Project Information & Introduction.pdf
+│   └── Results of DOE and Post-DOE Studies.pdf
+├── build.yml
+├── Dockerfile
 ├── LICENSE
 ├── Makefile
+├── README.md
+├── requirements.txt
 ```
 
 ## Requirements
@@ -49,7 +59,7 @@ make plots
 ```
 
 ## Results
-Final model performance and design matrix is available in `results/DOE_CNN_Design.xlsx`
+Final model performance and design matrix is available in the csv files as well as the reported result files.
 
 ## License
 See LICENSE file for details.
