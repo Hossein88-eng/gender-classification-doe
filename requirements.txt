@@ -11,7 +11,7 @@ ipython==9.2.0
 pylint==3.3.6
 pytest-cov==6.1.1
 black==25.1.0
-
+flake8==7.2.0
 
 # For cloud deployment:
 fastapi==0.115.12
