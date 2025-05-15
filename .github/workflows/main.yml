@@ -28,8 +28,7 @@ jobs:
           pip install black
 
       - name: Ensure workspace directory exists
-        run: |
-          mkdir -p /workspaces/gender-classification-doe
+        run: mkdir -p /workspaces/gender-classification-doe
 
       - name: Install gdown
         run: pip install gdown
@@ -39,6 +38,7 @@ jobs:
           FILE_ID="17r2m4Udb7X2ZR31BFB1aClkD_PKFNsfR"
           FILE_NAME="/workspaces/gender-classification-doe/gender_recognition_DOE_run6.h5"
           gdown $FILE_ID -O $FILE_NAME
+
 
 
       - name: Format code
