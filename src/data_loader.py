@@ -4,16 +4,7 @@ import tensorflow as tf
 BASE_DIR = Path.cwd()
 DATA_PATH = BASE_DIR / "data"
 
-if not DATA_PATH.exists():
-    self.skipTest("Data folder not found. Skipping dataset tests.")
-
-def get_image_counts():
-    """Returns the number of images for each class."""
-    data_dir_woman = os.path.join(DATA_DIR, "woman")
-    data_dir_man = os.path.join(DATA_DIR, "man")
-    return len(os.listdir(data_dir_woman)), len(os.listdir(data_dir_man))
-
-def load_datasets(data_path=DATA_DIR):
+def load_datasets(data_path=DATA_PATH):
     train_dataset = tf.keras.utils.image_dataset_from_directory(
         data_path,
         validation_split=0.2,
@@ -32,6 +23,7 @@ def load_datasets(data_path=DATA_DIR):
         batch_size=32
     )
 
-    test_dataset = val_dataset  # Or load separately if needed
+    test_dataset = val_dataset
 
     return train_dataset, val_dataset, test_dataset
+
