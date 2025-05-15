@@ -28,7 +28,7 @@ jobs:
 
       - name: Format code
         run: |
-          mmake format
+          make format
 
       - name: Run Linting
         run: |
