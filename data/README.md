@@ -19,14 +19,3 @@ This project uses free portrait images downloaded from [Pixabay](https://pixabay
 data/
 ├── female/
 └── male/
-
-**Note**: Due to licensing and storage limitations, the actual images are not included in this repository. You can recreate the dataset by searching and downloading gender-tagged portrait images from Pixabay directly.
-
-
-## Preprocessing
-
-- Resize all images to 130x130 pixels
-- Normalize pixel values to [0, 1]
-- Convert to RGB format if needed
-
-You can modify `src/data_loader.py` to automatically handle these preprocessing steps during dataset loading.
