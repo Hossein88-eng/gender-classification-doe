@@ -36,7 +36,7 @@ test:
 	$(PYTHON) -m unittest tests/test_all.py
 
 lint:
-	flake8 --ignore=E501,W504,W503,E203 src/ tests/
+	flake8 --ignore=E501,W504,W503 src/ tests/
 
 format:
 	. .venv/bin/activate && .venv/bin/black src/ tests/

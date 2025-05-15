@@ -50,7 +50,7 @@ def visualize_layers(model, final_img, img_size):
                 x *= 64
                 x += 128
                 x = np.clip(x, 0, 255).astype("uint8")  # Convert to image format
-                display_grid[:, i * size : (i + 1) * size] = x
+                display_grid[:, i * size: (i + 1) * size] = x
 
             scale = 20.0 / n_features
             plt.figure(figsize=(scale * n_features, scale))
