@@ -49,6 +49,13 @@ jobs:
           fi
           echo "Model file downloaded successfully!"
 
+      - name: Download Dataset
+        run: |
+          . .venv/bin/activate
+          FILE_ID="YOUR_DATA_FOLDER_ID"
+          gdown --folder $FILE_ID -O data
+          ls -l data/
+
       - name: Format code
         run: |
           . .venv/bin/activate
