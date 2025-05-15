@@ -33,12 +33,17 @@ plots:
 	$(PYTHON) src/training_utils.py --plot
 
 test:
-	$(PYTHON) -m unittest discover -s tests -p "*.py"
+	$(PYTHON) -m unittest tests/test_all.py
 
 lint:
-	flake8 src/ tests/
+	flake8 --ignore=E501,W504,W503 src/ tests/
+
+format:
+	black src/ tests/
+	autopep8 --in-place --aggressive --aggressive src/*.py tests/*.py
 
 clean:
 	find . -type d -name '__pycache__' -exec rm -r {} +
 	rm -rf .pytest_cache .mypy_cache
 
+all: install format lint test
