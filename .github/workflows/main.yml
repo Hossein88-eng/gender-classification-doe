@@ -13,25 +13,25 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          lfs: true  # if you have large files like model or data managed via Git LFS
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Set up virtual environment and install dependencies
         run: |
           python -m venv .venv
           . .venv/bin/activate
+          pip install --upgrade pip
           pip install -r requirements.txt
           pip install flake8 black gdown
 
-      - name: Debug GitHub Actions Environment
+      - name: Verify venv created
         run: |
-          echo "Current Working Directory:"
-          pwd
-          echo "Files in Workspace:"
-          ls -l
+          ls -l .venv
 
       - name: Download Model File from Google Drive
         run: |
@@ -39,24 +39,12 @@ jobs:
           FILE_ID="17r2m4Udb7X2ZR31BFB1aClkD_PKFNsfR"
           FILE_NAME="gender_recognition_DOE_run6.h5"
           gdown $FILE_ID -O $FILE_NAME
-          ls -lh $FILE_NAME  # Confirm it exists
+          ls -lh $FILE_NAME  # Confirm file exists
 
-      - name: Verify Model File Exists
+      - name: Verify Data Folder Exists
         run: |
-          if [ ! -f "gender_recognition_DOE_run6.h5" ]; then
-            echo "Error: Model file not found!"
-            exit 1
-          fi
-          echo "Model file downloaded successfully!"
-
-      - name: Checkout repo
-        uses: actions/checkout@v3
-        with:
-          lfs: true
-      
-      - name: Git LFS Pull (if needed)
-        run: |
-          git lfs pull
+          echo "Listing data/ directory..."
+          ls -l data
 
       - name: Format code
         run: |
