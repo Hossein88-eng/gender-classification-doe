@@ -1,8 +1,14 @@
-import os
+from pathlib import Path
 import tensorflow as tf
 
-BASE_DIR = os.getcwd()
-DATA_DIR = os.path.join(BASE_DIR, "data")
+# Dynamically set the correct data path
+DATA_DIR = Path.cwd() / "data"
+
+def get_image_counts():
+    """Returns the number of images for each class."""
+    data_dir_woman = os.path.join(DATA_DIR, "woman")
+    data_dir_man = os.path.join(DATA_DIR, "man")
+    return len(os.listdir(data_dir_woman)), len(os.listdir(data_dir_man))
 
 def load_datasets(data_path=DATA_DIR):
     train_dataset = tf.keras.utils.image_dataset_from_directory(
@@ -23,6 +29,6 @@ def load_datasets(data_path=DATA_DIR):
         batch_size=32
     )
 
-    test_dataset = val_dataset  # or create separate test if you want
+    test_dataset = val_dataset  # Or load separately if needed
 
     return train_dataset, val_dataset, test_dataset
