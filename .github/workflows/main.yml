@@ -25,6 +25,7 @@ jobs:
           source .venv/bin/activate
           pip install -r requirements.txt
           pip install flake8
+          pip install black  # Ensure black is installed
 
       - name: Format code
         run: |
