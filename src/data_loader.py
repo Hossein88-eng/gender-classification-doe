@@ -5,6 +5,9 @@ BASE_DIR = Path.cwd()
 DATA_PATH = BASE_DIR / "data"
 
 def load_datasets(data_path=DATA_PATH):
+    if not data_path.exists():
+        raise FileNotFoundError(f"Data directory '{data_path}' does not exist!")
+
     train_dataset = tf.keras.utils.image_dataset_from_directory(
         data_path,
         validation_split=0.2,
@@ -26,4 +29,5 @@ def load_datasets(data_path=DATA_PATH):
     test_dataset = val_dataset
 
     return train_dataset, val_dataset, test_dataset
+
 
