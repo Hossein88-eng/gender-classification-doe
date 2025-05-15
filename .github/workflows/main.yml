@@ -49,12 +49,14 @@ jobs:
           fi
           echo "Model file downloaded successfully!"
 
-      - name: Download Dataset
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+      
+      - name: Git LFS Pull (if needed)
         run: |
-          . .venv/bin/activate
-          FILE_ID="YOUR_DATA_FOLDER_ID"
-          gdown --folder $FILE_ID -O data
-          ls -l data/
+          git lfs pull
 
       - name: Format code
         run: |
