@@ -1,3 +1,5 @@
+[![Build and Test](https://github.com/Hossein88-eng/gender-classification-doe/actions/workflows/main.yml/badge.svg)](https://github.com/Hossein88-eng/gender-classification-doe/actions/workflows/main.yml)
+
 # gender-classification-doe
 It is a professional gender classification project combining manual tuning, DOE analysis, and automated callback optimization.
 
