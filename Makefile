@@ -36,11 +36,10 @@ test:
 	$(PYTHON) -m unittest tests/test_all.py
 
 lint:
-	flake8 --ignore=E501,W504,W503 src/ tests/
+	flake8 --ignore=E501,W504,W503,E203 src/ tests/
 
 format:
-	black src/ tests/
-	autopep8 --in-place --aggressive --aggressive src/*.py tests/*.py
+	. .venv/bin/activate && .venv/bin/black src/ tests/
 
 clean:
 	find . -type d -name '__pycache__' -exec rm -r {} +

@@ -12,12 +12,8 @@ def get_image_counts():
 
 
 def load_datasets(
-        img_size,
-        batch_size,
-        validation_split,
-        test_split,
-        seed_num,
-        shuffle_buffer_size):
+    img_size, batch_size, validation_split, test_split, seed_num, shuffle_buffer_size
+):
     """Loads training, validation, and test datasets."""
     image_size = (img_size, img_size)
 
@@ -53,11 +49,7 @@ def load_datasets(
     return train_dataset, val_dataset, test_dataset
 
 
-def optimize_datasets(
-        train_dataset,
-        val_dataset,
-        test_dataset,
-        shuffle_buffer_size):
+def optimize_datasets(train_dataset, val_dataset, test_dataset, shuffle_buffer_size):
     """Optimizes datasets for performance."""
     AUTOTUNE = tf.data.AUTOTUNE
 

@@ -19,11 +19,8 @@ def predict_image(model, img_path, img_size):
     prediction = model.predict(final_img)
     result = "Female" if prediction > 0.5 else "Male"
     confidence = (
-        prediction[0][0] *
-        100 if result == "Female" else (
-            1 -
-            prediction[0][0]) *
-        100)
+        prediction[0][0] * 100 if result == "Female" else (1 - prediction[0][0]) * 100
+    )
 
     return result, confidence, final_img
 
@@ -52,9 +49,8 @@ def visualize_layers(model, final_img, img_size):
                 x /= x.std() + 1e-8  # Normalize
                 x *= 64
                 x += 128
-                x = np.clip(x, 0, 255).astype(
-                    "uint8")  # Convert to image format
-                display_grid[:, i * size: (i + 1) * size] = x
+                x = np.clip(x, 0, 255).astype("uint8")  # Convert to image format
+                display_grid[:, i * size : (i + 1) * size] = x
 
             scale = 20.0 / n_features
             plt.figure(figsize=(scale * n_features, scale))

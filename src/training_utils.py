@@ -7,11 +7,8 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 def train_model(model, train_ds, val_ds, callbacks, epochs=15, verbose=2):
     history = model.fit(
-        train_ds,
-        validation_data=val_ds,
-        epochs=epochs,
-        callbacks=callbacks,
-        verbose=2)
+        train_ds, validation_data=val_ds, epochs=epochs, callbacks=callbacks, verbose=2
+    )
     return pd.DataFrame(history.history)
 
 
@@ -45,9 +42,7 @@ def evaluate_model(model, val_ds):
     y_pred_prob = model.predict(val_ds)
     y_pred = (y_pred_prob > 0.5).astype(int).flatten()
 
-    report = classification_report(
-        y_true, y_pred, target_names=[
-            "Female", "Male"])
+    report = classification_report(y_true, y_pred, target_names=["Female", "Male"])
     conf_matrix = confusion_matrix(y_true, y_pred)
 
     return report, conf_matrix

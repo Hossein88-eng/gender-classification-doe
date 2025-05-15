@@ -37,8 +37,7 @@ class TestProject(unittest.TestCase):
 
     def test_image_prediction(self):
         """Check if the model predicts an image correctly."""
-        result, confidence, _ = predict_image(
-            self.model, TEST_IMAGE_PATH, IMG_SIZE)
+        result, confidence, _ = predict_image(self.model, TEST_IMAGE_PATH, IMG_SIZE)
         self.assertIn(result, ["Female", "Male"])
         self.assertGreaterEqual(confidence, 0)
 
