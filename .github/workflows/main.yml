@@ -29,10 +29,10 @@ jobs:
 
       - name: Download Model File from Google Drive
         run: |
-          FILE_ID="17r2m4Udb7X2ZR31BFB1aClkD_PKFNsfR"  # Use ONLY the File ID
+          FILE_ID="17r2m4Udb7X2ZR31BFB1aClkD_PKFNsfR"
           FILE_NAME="gender_recognition_DOE_run6.h5"
 
-          wget --no-check-certificate "https://drive.google.com/uc?export=download&id=$FILE_ID" -O "/workspaces/gender-classification-doe/$FILE_NAME"
+          curl -L -o "/workspaces/gender-classification-doe/$FILE_NAME" "https://drive.google.com/uc?export=download&id=$FILE_ID"
 
       - name: Format code
         run: |
