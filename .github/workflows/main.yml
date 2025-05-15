@@ -31,22 +31,19 @@ jobs:
           echo "Current Working Directory:"
           pwd
           echo "Files in Workspace:"
-          ls -l $GITHUB_WORKSPACE
-
-      - name: Ensure workspace directory exists
-        run: mkdir -p $GITHUB_WORKSPACE
+          ls -l
 
       - name: Download Model File from Google Drive
         run: |
           . .venv/bin/activate
           FILE_ID="17r2m4Udb7X2ZR31BFB1aClkD_PKFNsfR"
-          FILE_NAME="$GITHUB_WORKSPACE/gender_recognition_DOE_run6.h5"
+          FILE_NAME="gender_recognition_DOE_run6.h5"
           gdown $FILE_ID -O $FILE_NAME
-          ls -lh $FILE_NAME  # Confirm the file exists
+          ls -lh $FILE_NAME  # Confirm it exists
 
       - name: Verify Model File Exists
         run: |
-          if [ ! -f "$GITHUB_WORKSPACE/gender_recognition_DOE_run6.h5" ]; then
+          if [ ! -f "gender_recognition_DOE_run6.h5" ]; then
             echo "Error: Model file not found!"
             exit 1
           fi
