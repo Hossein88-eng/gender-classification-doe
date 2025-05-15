@@ -1,4 +1,4 @@
-  name: Build and Test
+name: Build and Test
 
 on:
   push:
@@ -22,16 +22,20 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv .venv
-          source .venv/bin/activate
+          . .venv/bin/activate  # Use "." instead of "source" in CI
           pip install -r requirements.txt
           pip install flake8
           pip install black
 
       - name: Debug GitHub Actions Environment
-        run: pwd && ls -l
+        run: |
+          echo "Current Working Directory:"
+          pwd
+          echo "Files in Workspace:"
+          ls -l $GITHUB_WORKSPACE
 
       - name: Ensure workspace directory exists
-        run: mkdir -p /workspaces/gender-classification-doe
+        run: mkdir -p $GITHUB_WORKSPACE
 
       - name: Install gdown
         run: pip install gdown
@@ -40,20 +44,26 @@ jobs:
         run: |
           FILE_ID="17r2m4Udb7X2ZR31BFB1aClkD_PKFNsfR"
           FILE_NAME="$GITHUB_WORKSPACE/gender_recognition_DOE_run6.h5"
-      
+
           gdown $FILE_ID -O $FILE_NAME
 
-      - name: Format code
+      - name: Verify Model File Exists
         run: |
-          make format
+          if [ ! -f "$GITHUB_WORKSPACE/gender_recognition_DOE_run6.h5" ]; then
+            echo "Error: Model file not found!"
+            exit 1
+          fi
+          echo "Model file downloaded successfully!"
+
+      - name: Format code
+        run: make format
 
       - name: Run Linting
         run: |
-          source .venv/bin/activate
+          . .venv/bin/activate  # Use "." instead of "source"
           flake8 --ignore=E501,W504,W503,E203 src/ tests/
 
       - name: Run Tests
         run: |
-          source .venv/bin/activate
+          . .venv/bin/activate
           python -m unittest discover -s tests
-
