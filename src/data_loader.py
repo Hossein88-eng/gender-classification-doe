@@ -1,8 +1,11 @@
 from pathlib import Path
 import tensorflow as tf
 
-# Dynamically set the correct data path
-DATA_DIR = Path.cwd() / "data"
+BASE_DIR = Path.cwd()
+DATA_PATH = BASE_DIR / "data"
+
+if not DATA_PATH.exists():
+    self.skipTest("Data folder not found. Skipping dataset tests.")
 
 def get_image_counts():
     """Returns the number of images for each class."""
