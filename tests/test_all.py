@@ -12,7 +12,7 @@ VALIDATION_SPLIT = 0.1
 TEST_SPLIT = 0.00
 SEED_NUM = 101
 
-MODEL_PATH = "/workspaces/gender-classification-doe/gender_recognition_DOE_run6.h5"
+MODEL_PATH = "gender_recognition_DOE_run6.h5"
 
 TEST_IMAGE_PATH = "/workspaces/gender-classification-doe/tests/" "Hossein_10.jpg"
 
