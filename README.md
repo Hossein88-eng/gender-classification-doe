@@ -50,18 +50,23 @@ pip install -r requirements.txt
 - **DOE Approach**: Grid experiments tuning filter sizes, dropout rates, dense units, etc.
 
 ## How to Run
-Train the model inside a GitHub Codespace:
+Train the model inside a GitHub Codespace
+
+Provided sample DOE design point's notebook (DOE_Run 06.ipynb) uses the following internal custom Python modules to simplify, reproducable, and scalable data loading, CNN model building, training and evaluation as well as the prediction for the classes of new images:
 ```bash
-make train
+src.data_loader
+src.model_builder
+src.training_utils
+src.image_predictor
 ```
-Run evaluation and plot results:
-```bash
-make evaluate
-make plots
-```
+
+Post-DOE model can be run via provided notebooks for the selected design points in the notebooks section.
 
 ## Results
-Final model performance and design matrix is available in the csv files as well as the reported result files.
+Final model performance and design matrix is available in the csv files as well as the reported result files. Report file is also available in the results section (Results of DOE and Post-DOE Studies.pdf).
 
 ## License
-See LICENSE file for details.
+See LICENSE file in the project repository as well as the README file in the data folder for details.
+
+## Further Information & Contact
+For further information and contact to the author, you can send an email via the following email address: beidaghydizaji@gmx.de 
